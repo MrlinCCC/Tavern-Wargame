@@ -2,6 +2,17 @@
 #include<vector>
 namespace GameCore {
 
+	//Game类
+	class Game_Life_Line {
+	public:
+		Game_Life_Line();
+		void startMatch(bool match);
+		void getReady();
+	private:
+		bool match;//是否匹配到对手
+		bool ready;//是否准备就绪
+
+	};
 
 	//随从基类
 	class Entourage {

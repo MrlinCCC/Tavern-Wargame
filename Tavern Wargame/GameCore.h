@@ -1,19 +1,32 @@
 #pragma once
 #include<vector>
+#include<windows.h>
+#include<conio.h>
+#include"include/asio.hpp"
+#include<map>
 namespace GameCore {
 
 	//Game类
 	class Game_Life_Line {
 	public:
 		Game_Life_Line();
-		void startMatch(bool match);
-		void getReady();
+		void startMatch(bool match, bool ready);
+		void init_Charactor(Charactor * charactor);
+
 	private:
-		bool match;//是否匹配到对手
-		bool ready;//是否准备就绪
+		
 
 	};
+	class Shop
+	{
+	public:
+		Shop();
+		
 
+	private:
+		std::map<int, Entourage*> entourages;
+
+	};
 	//随从基类
 	class Entourage {
 	public:
@@ -24,9 +37,9 @@ namespace GameCore {
 
 		void attack_Entourage();//攻击敌方随从
 		void be_attacked_Entourage(int aggressivity_enemy);//我方随从被攻击
-		void show();
 		
 	private:
+		int gold;//所需金币
 		int aggressivity;//攻击力
 		int life;//生命力
 		
@@ -36,19 +49,19 @@ namespace GameCore {
 	public :
 		Charactor();
 		void attack_c();//Player attack
-		void buy();
-		void sell();
+		void buy(Entourage *entourage);
+		void sell(int i);
 		void flash();
-		void set_on();
+		void set_on(int i);
 		void lift_down();
-			
+		void show_entourage();//
 	private:
 		int life;
 		bool life_event;//存活状态(living or die)
 		int init_num_Entourage;//初始随从数量
 		int init_num_gold;//初始金币数量
-		std::vector<Charactor*> entourages_rest;
-		std::vector<Charactor*> entourages_fight;
+		std::vector<Entourage*> entourages_rest;
+		std::vector<Entourage*> entourages_fight;
 	};
 
 }

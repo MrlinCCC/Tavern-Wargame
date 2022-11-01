@@ -1,67 +1,65 @@
 #pragma once
-#include<vector>
-#include<windows.h>
-#include<conio.h>
-#include"include/asio.hpp"
-#include<map>
-namespace GameCore {
+#include <vector>
+#include <windows.h>
+#include <conio.h>
+#include "include/asio.hpp"
+#include <map>
+namespace GameCore
+{
 
-	//GameÀà
-	class Game_Life_Line {
+	// Gameï¿½ï¿½
+	class Game_Life_Line
+	{
 	public:
 		Game_Life_Line();
 		void startMatch(bool match, bool ready);
-		void init_Charactor(Charactor * charactor);
+		void init_Charactor(Charactor *charactor);
 
 	private:
-		
-
 	};
 	class Shop
 	{
 	public:
 		Shop();
-		
 
 	private:
-		std::map<int, Entourage*> entourages;
-
+		std::map<int, Entourage *> entourages;
 	};
-	//Ëæ´Ó»ùÀà
-	class Entourage {
+	//ï¿½ï¿½Ó»ï¿½ï¿½ï¿½
+	class Entourage
+	{
 	public:
-		//Entourage(int x, int y) :aggressivity(x), life(y) {};
+		// Entourage(int x, int y) :aggressivity(x), life(y) {};
 		Entourage();
-		//Entourage attack;
+		// Entourage attack;
 
+		void attack_Entourage();							//ï¿½ï¿½ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½ï¿½
+		void be_attacked_Entourage(int aggressivity_enemy); //ï¿½Ò·ï¿½ï¿½ï¿½Ó±ï¿½ï¿½ï¿½ï¿½ï¿½
 
-		void attack_Entourage();//¹¥»÷µÐ·½Ëæ´Ó
-		void be_attacked_Entourage(int aggressivity_enemy);//ÎÒ·½Ëæ´Ó±»¹¥»÷
-		
 	private:
-		int gold;//ËùÐè½ð±Ò
-		int aggressivity;//¹¥»÷Á¦
-		int life;//ÉúÃüÁ¦
-		
+		int gold;		  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		int aggressivity; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		int life;		  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	};
-	//Íæ¼ÒÀà
-	class Charactor {
-	public :
+	//ï¿½ï¿½ï¿½ï¿½ï¿½
+	class Charactor
+	{
+	public:
 		Charactor();
-		void attack_c();//Player attack
+		void attack_c(); // Player attack
 		void buy(Entourage *entourage);
 		void sell(int i);
 		void flash();
 		void set_on(int i);
 		void lift_down();
-		void show_entourage();//
+		void show_entourage(); //
 	private:
 		int life;
-		bool life_event;//´æ»î×´Ì¬(living or die)
-		int init_num_Entourage;//³õÊ¼Ëæ´ÓÊýÁ¿
-		int init_num_gold;//³õÊ¼½ð±ÒÊýÁ¿
-		std::vector<Entourage*> entourages_rest;
-		std::vector<Entourage*> entourages_fight;
+		bool life_event;		//ï¿½ï¿½ï¿½×´Ì¬(living or die)
+		int init_num_Entourage; //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		int init_num_gold;		//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		std::vector<Entourage *> entourages_rest;
+		std::vector<Entourage *> entourages_fight;
 	};
 
 }

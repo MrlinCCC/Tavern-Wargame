@@ -9,17 +9,17 @@ Game_Life_Line::Game_Life_Line(){
 	
 }
 void startmatch(bool match,bool ready) {
-	//½¨Á¢Á¬½Ó£¬·µ»Ømatch£¨true or false£©
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½matchï¿½ï¿½true or falseï¿½ï¿½
 	
 	asio::io_context io_context;
 	tcp::resolver resolver(io_context);
 	tcp::resolver::results_type endpoints = resolver.resolve("127.0.0.1", "14");
 	tcp::socket socket(io_context);
 	asio::connect(socket, endpoints);
-	std::cout << "ÕýÔÚÆ¥Åä...";
+	std::cout << "ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½...";
 	asio::read(socket, asio::buffer(&match, sizeof(bool)));
 	system("cls");
-	std::cout << "ÈÎÒâ¼üÈ·ÈÏÄúÒÑ¾­×¼±¸¾ÍÐ÷";
+	std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 	while (_kbhit()) {
 		asio::write(socket, asio::buffer(&ready, sizeof(bool)));
 	}
@@ -34,7 +34,7 @@ void init_Charactor() {
 	
 }
 void Charactor::buy(GameCore::Entourage* entourage) {
-	//»ñÈ¡ÉÌµêÀà´«µÝµÄËæ´ÓÐÅÏ¢
+	//ï¿½ï¿½È¡ï¿½Ìµï¿½ï¿½à´«ï¿½Ýµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	entourages_rest.push_back(entourage);
 }
 void Charactor::sell(int i) {
@@ -49,11 +49,11 @@ void Charactor::set_on(int i) {
 	
 }
 void Charactor::show_entourage() {
-	//»ñÈ¡¶ÔÃæÅÆµÄÊý¾Ý
+	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½
 	asio::read(socket,asio::buffer());
-	std::cout << "ÎÒ·½³¡ÉÏËæ´Ó£º"<<std::endl;
+	std::cout << "ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½"<<std::endl;
 	std::;
-	std::cout << "ÎÒ·½³¡ÏÂËæ´Ó£º"<< std::endl;
+	std::cout << "ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½"<< std::endl;
 	std::;
 }
 

@@ -1,0 +1,5 @@
+﻿  GameCore.cpp
+D:\Githubfile\My_Repository\Tavern Wargame\include\asio\detail\socket_types.hpp(24,1): fatal error C1189: #error:  WinSock.h has already been included
+  main.cpp
+D:\Githubfile\My_Repository\Tavern Wargame\include\asio\detail\socket_types.hpp(24,1): fatal error C1189: #error:  WinSock.h has already been included
+  正在生成代码...

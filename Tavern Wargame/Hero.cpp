@@ -1,8 +1,8 @@
-#include "Hero.h"
+ï»¿#include "Hero.h"
 
 
 using skill_type = void(*)(GameCore::Charactor);
-//¸ø¶Ü£¬Ëæ´Ó¼ÓÑª¼Ó¹¥
+//ç»™ç›¾ï¼Œéšä»åŠ è¡€åŠ æ”»
 static std::vector<Hero::hero> hero_list;
 void Hero::skill1(GameCore::Charactor charactor)
 {
@@ -14,12 +14,12 @@ void Hero::skill1(GameCore::Charactor charactor)
 		i.set_aggressivity(i.get_aggressivity()+1);
 	}
 }
-//ÓÀ¾Ã¼ÓÊ¥¶Ü
+//æ°¸ä¹…åŠ åœ£ç›¾
 void Hero::skill2(GameCore::Charactor charactor)
 {
 
 }
-//½«ÉÌµêÈÎÒâÒ»ÕÅ¿¨Ëæ»úÎªÁíÒ»ÕÅÍ¬ĞÇ¼¶¿¨
+//å°†å•†åº—ä»»æ„ä¸€å¼ å¡éšæœºä¸ºå¦ä¸€å¼ åŒæ˜Ÿçº§å¡
 void Hero::skill3(GameCore::Charactor charactor)
 {
 	
@@ -35,10 +35,10 @@ void Hero::set_hero(hero &h,std::string s,skill_type st)
 void Hero::init_hero()
 {
 	/*Hero::set_hero(*new hero(), "lp", Hero::skill1);*/
-	Hero::hero_list.push_back(Hero::hero("lp","»ñµÃ5µã¶îÍâÉúÃüÖµ£¬ËùÓĞ³¡ÉÏËæ´ÓÊôĞÔÖµ¼Ó1", Hero::skill1));
-	Hero::hero_list.push_back(Hero::hero("lc","Ñ¡ÔñÒ»Ãû³¡ÉÏËæ´Ó»ñµÃÊ¥¶Ü", Hero::skill2));
-	Hero::hero_list.push_back(Hero::hero("lx","½«ÉÌµêÕ¹Ê¾µÄËæ´ÓÖ®Ò»×ª»¯ÎªÁíÒ»ÕÅÍ¬ĞÇ¼¶Ëæ´Ó¿¨", Hero::skill3));
-	Hero::hero_list.push_back(Hero::hero("liming", "½«ÉÌµêÕ¹Ê¾µÄËæ´ÓÖ®Ò»×ª»¯ÎªÁíÒ»ÕÅÍ¬ĞÇ¼¶Ëæ´Ó¿¨", Hero::skill3));
+	Hero::hero_list.push_back(Hero::hero("lp","è·å¾—5ç‚¹é¢å¤–ç”Ÿå‘½å€¼ï¼Œæ‰€æœ‰åœºä¸Šéšä»å±æ€§å€¼åŠ 1", Hero::skill1));
+	Hero::hero_list.push_back(Hero::hero("lc","é€‰æ‹©ä¸€ååœºä¸Šéšä»è·å¾—åœ£ç›¾", Hero::skill2));
+	Hero::hero_list.push_back(Hero::hero("lx","å°†å•†åº—å±•ç¤ºçš„éšä»ä¹‹ä¸€è½¬åŒ–ä¸ºå¦ä¸€å¼ åŒæ˜Ÿçº§éšä»å¡", Hero::skill3));
+	Hero::hero_list.push_back(Hero::hero("liming", "å°†å•†åº—å±•ç¤ºçš„éšä»ä¹‹ä¸€è½¬åŒ–ä¸ºå¦ä¸€å¼ åŒæ˜Ÿçº§éšä»å¡", Hero::skill3));
 }
 
 

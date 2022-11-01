@@ -1,4 +1,4 @@
-#include "GameCore.h"
+ï»¿#include "GameCore.h"
 #include<iostream>
 
 using asio::ip::tcp;
@@ -27,15 +27,15 @@ void GameCore::Game_Life_Line::run()
 }
 
 void GameCore::Game_Life_Line::startMatch(bool match,bool ready,tcp::socket socket) {
-	//½¨Á¢Á¬½Ó£¬·µ»Ømatch£¨true or false£©
-	std::cout << "ÕýÔÚÆ¥Åä...";
+	//å»ºç«‹è¿žæŽ¥ï¼Œè¿”å›žmatchï¼ˆtrue or falseï¼‰
+	std::cout << "æ­£åœ¨åŒ¹é…...";
 	asio::read(socket, asio::buffer(&match, sizeof(bool)));
 	system("cls");
-	std::cout << "ÈÎÒâ¼üÈ·ÈÏÄúÒÑ¾­×¼±¸¾ÍÐ÷";
+	std::cout << "ä»»æ„é”®ç¡®è®¤æ‚¨å·²ç»å‡†å¤‡å°±ç»ª";
 	while (!_kbhit()) {
 		asio::write(socket, asio::buffer(&ready, sizeof(bool)));
 		break;
-	}//Æ¥Åä³É¹¦¿ªÊ¼ÓÎÏ·
+	}//åŒ¹é…æˆåŠŸå¼€å§‹æ¸¸æˆ
 }
 
 void GameCore::Game_Life_Line::select_Hero(Hero &hero ,Charactor& charactor, tcp::socket socket)
@@ -45,7 +45,7 @@ void GameCore::Game_Life_Line::select_Hero(Hero &hero ,Charactor& charactor, tcp
 	int getarr[3];
 	std::cout << "please choose your hero" << std::endl;
 	for (int i = 0; i < 3; i++) {
-		asio::read(socket, asio::buffer(&getarr[i], sizeof(int)));//´«µÝÈý¸öÓ¢ÐÛµÄÏÂ±ê
+		asio::read(socket, asio::buffer(&getarr[i], sizeof(int)));//ä¼ é€’ä¸‰ä¸ªè‹±é›„çš„ä¸‹æ ‡
 	}
 	
 	for (int i = 0; i < 3;i++) {
@@ -61,7 +61,7 @@ void GameCore::Game_Life_Line::select_Hero(Hero &hero ,Charactor& charactor, tcp
 GameCore::Charactor::Charactor() :life(100), life_event(1), init_num_Entourage(0), init_num_gold(3) {}
 
 void Charactor::buy(GameCore::Entourage &entourage) {
-	//»ñÈ¡ÉÌµêÀà´«µÝµÄËæ´ÓÐÅÏ¢
+	//èŽ·å–å•†åº—ç±»ä¼ é€’çš„éšä»Žä¿¡æ¯
 	entourages_rest.push_back(entourage);
 }
 void Charactor::sell(int i) {
@@ -80,23 +80,23 @@ void Charactor::lift_down(int i) {
 	entourages_fight.erase((entourages_rest.begin() + i));
 }
 void Charactor::show_entourages() {
-	//»ñÈ¡¶ÔÃæÅÆµÄÊý¾Ý
+	//èŽ·å–å¯¹é¢ç‰Œçš„æ•°æ®
 
 	asio::read(socket,asio::buffer(&entourages_enemy, sizeof(std::vector<Entourage>)));
-	std::cout << "µÐ·½³¡ÉÏËæ´Ó:" << std::endl;
+	std::cout << "æ•Œæ–¹åœºä¸Šéšä»Ž:" << std::endl;
 	for (auto i : entourages_enemy)
 	{
 		std::cout << i.show_entourage();
 	}
-	std::cout << "ÎÒ·½³¡ÉÏËæ´Ó£º"<<std::endl;
+	std::cout << "æˆ‘æ–¹åœºä¸Šéšä»Žï¼š"<<std::endl;
 	for (auto i : entourages_fight) {
-		//Õ¹Ê¾ÎÒ·½³¡ÉÏËæ´Ó
+		//å±•ç¤ºæˆ‘æ–¹åœºä¸Šéšä»Ž
 		std::cout << i.show_entourage();
 	}
 	
-	std::cout << "ÎÒ·½³¡ÏÂËæ´Ó£º"<< std::endl;
+	std::cout << "æˆ‘æ–¹åœºä¸‹éšä»Žï¼š"<< std::endl;
 	for (auto i : entourages_rest) {
-		//Õ¹Ê¾ÎÒ·½³¡ÏÂËæ´Ó
+		//å±•ç¤ºæˆ‘æ–¹åœºä¸‹éšä»Ž
 		std::cout << i.show_entourage();
 	}
 }

@@ -1,4 +1,4 @@
-#include<iostream>
+﻿#include<iostream>
 #include"GameCore.h"
 using namespace std;
 

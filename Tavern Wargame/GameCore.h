@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include"Hero.h"
 #include<vector>
@@ -10,7 +10,7 @@
 namespace GameCore {
 	class Charactor;
 	
-	//GameÀà
+	//Gameç±»
 	class Game_Life_Line {
 
 	public:
@@ -35,16 +35,16 @@ namespace GameCore {
 		std::map<int, Entourage*> entourages;
 
 	};
-	//Ëæ´Ó»ùÀà
+	//éšä»åŸºç±»
 	class Entourage {
 	public:
 		//Entourage(int x, int y) :aggressivity(x), life(y) {};
 		Entourage();
 		//Entourage attack;
-		std::string show_entourage();//Õ¹Ê¾µ±Ç°Ëæ´Ó
+		std::string show_entourage();//å±•ç¤ºå½“å‰éšä»
 
-		void attack_Entourage();//¹¥»÷µĞ·½Ëæ´Ó
-		void be_attacked_Entourage(int aggressivity_enemy);//ÎÒ·½Ëæ´Ó±»¹¥»÷
+		void attack_Entourage();//æ”»å‡»æ•Œæ–¹éšä»
+		void be_attacked_Entourage(int aggressivity_enemy);//æˆ‘æ–¹éšä»è¢«æ”»å‡»
 		int get_gold();
 		int get_aggressivity();
 		int get_life();
@@ -54,13 +54,13 @@ namespace GameCore {
 	private:
 		std::string name;
 
-		int gold;//ËùĞè½ğ±Ò
-		int aggressivity;//¹¥»÷Á¦
-		int life;//ÉúÃüÁ¦
+		int gold;//æ‰€éœ€é‡‘å¸
+		int aggressivity;//æ”»å‡»åŠ›
+		int life;//ç”Ÿå‘½åŠ›
 		
 	};
 	
-	//Íæ¼ÒÀà
+	//ç©å®¶ç±»
 	class Charactor {
 		
 		using chara_skill = void(*)(Charactor&);
@@ -71,11 +71,11 @@ namespace GameCore {
 		void buy(Entourage &entourage);
 		void sell(int i);
 		void flash();
-		void set_on(int i);//Ëæ´ÓÈ¥Õ½¶·Çø
-		void lift_down(int i);//Ëæ´ÓÈ¥ĞİÏ¢Çø
-		void show_entourages();//Õ¹Ê¾ËùÓĞËæ´Ó
+		void set_on(int i);//éšä»å»æˆ˜æ–—åŒº
+		void lift_down(int i);//éšä»å»ä¼‘æ¯åŒº
+		void show_entourages();//å±•ç¤ºæ‰€æœ‰éšä»
 
-		void show_hero();//Õ¹Ê¾Ó¢ĞÛĞÅÏ¢4
+		void show_hero();//å±•ç¤ºè‹±é›„ä¿¡æ¯4
 		void get_hero_skill(Hero::hero &hero_skill);
 		int get_life();
 		void set_life(int l);
@@ -91,9 +91,9 @@ namespace GameCore {
 	private:
 		chara_skill now_skill;
 		int life;
-		bool life_event;//´æ»î×´Ì¬(living or die)
-		int init_num_Entourage;//³õÊ¼Ëæ´ÓÉÏÏŞ
-		int init_num_gold;//³õÊ¼½ğ±ÒÊıÁ¿
+		bool life_event;//å­˜æ´»çŠ¶æ€(living or die)
+		int init_num_Entourage;//åˆå§‹éšä»ä¸Šé™
+		int init_num_gold;//åˆå§‹é‡‘å¸æ•°é‡
 		std::vector<Entourage> entourages_rest;
 		std::vector<Entourage> entourages_fight;
 		std::vector<Entourage> entourages_enemy;

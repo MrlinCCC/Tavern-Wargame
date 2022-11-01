@@ -88,7 +88,11 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+<<<<<<< HEAD
       <AdditionalOptions>/uft-8 %(AdditionalOptions)</AdditionalOptions>
+=======
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+>>>>>>> 95e228ce288190f0f12ea4bf959ae31c9cbdf0ad
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -103,7 +107,11 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+<<<<<<< HEAD
       <AdditionalOptions>/uft-8 %(AdditionalOptions)</AdditionalOptions>
+=======
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+>>>>>>> 95e228ce288190f0f12ea4bf959ae31c9cbdf0ad
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -118,7 +126,11 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+<<<<<<< HEAD
       <AdditionalOptions>/uft-8 %(AdditionalOptions)</AdditionalOptions>
+=======
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+>>>>>>> 95e228ce288190f0f12ea4bf959ae31c9cbdf0ad
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,7 +145,11 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+<<<<<<< HEAD
       <AdditionalOptions>/uft-8 %(AdditionalOptions)</AdditionalOptions>
+=======
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+>>>>>>> 95e228ce288190f0f12ea4bf959ae31c9cbdf0ad
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,9 +160,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="GameCore.h" />
+    <ClInclude Include="Hero.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameCore.cpp" />
+    <ClCompile Include="Hero.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,1 +1,2 @@
 D:\my_git\My_Repository\Tavern Wargame\Debug\Tavern Wargame.exe
+D:\Githubfile\My_Repository\Tavern Wargame\Debug\Tavern Wargame Client.exe

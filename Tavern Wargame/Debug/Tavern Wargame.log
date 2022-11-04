@@ -1,35 +1,11 @@
-﻿  GameCore.cpp
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: 中间目录(Debug\)包含从另一个项目(Tavern Wargame.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+  Character.cpp
+  GameCore.cpp
   Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
   - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
   - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
   Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
-D:\Githubfile\My_Repository\Tavern Wargame\include\asio\impl\read.hpp(55,23): error C2228: “.read_some”的左边必须有类/结构/联合
-D:\Githubfile\My_Repository\Tavern Wargame\include\asio\impl\read.hpp(55,23): message : 类型是“SyncReadStream (__stdcall &)”
-          with
-          [
-              SyncReadStream=SOCKET (int,int,int)
-          ]
-D:\Githubfile\My_Repository\Tavern Wargame\include\asio\impl\read.hpp(73): message : 查看对正在编译的函数 模板 实例化“size_t asio::detail::read_buffer_seq<SyncReadStream,MutableBufferSequence,const asio::mutable_buffer*,CompletionCondition>(SyncReadStream (__stdcall &),const MutableBufferSequence &,const MutableBufferIterator &,CompletionCondition,asio::error_code &)”的引用
-          with
-          [
-              SyncReadStream=SOCKET (int,int,int),
-              MutableBufferSequence=asio::mutable_buffers_1,
-              CompletionCondition=asio::detail::transfer_all_t,
-              MutableBufferIterator=const asio::mutable_buffer *
-          ]
-D:\Githubfile\My_Repository\Tavern Wargame\include\asio\impl\read.hpp(83): message : 查看对正在编译的函数 模板 实例化“size_t asio::read<SyncReadStream,MutableBufferSequence,asio::detail::transfer_all_t>(SyncReadStream (__stdcall &),const MutableBufferSequence &,CompletionCondition,asio::error_code &,int)”的引用
-          with
-          [
-              SyncReadStream=SOCKET (int,int,int),
-              MutableBufferSequence=asio::mutable_buffers_1,
-              CompletionCondition=asio::detail::transfer_all_t
-          ]
-D:\Githubfile\My_Repository\Tavern Wargame\GameCore.cpp(86): message : 查看对正在编译的函数 模板 实例化“size_t asio::read<SOCKET(int,int,int),asio::mutable_buffers_1>(SyncReadStream (__stdcall &),const MutableBufferSequence &,int)”的引用
-          with
-          [
-              SyncReadStream=SOCKET (int,int,int),
-              MutableBufferSequence=asio::mutable_buffers_1
-          ]
+  Hero.cpp
   main.cpp
   Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
   - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
@@ -48,9 +24,4 @@ D:\Githubfile\My_Repository\Tavern Wargame\scs\scs\scs.hpp(1434,23): warning C40
 D:\Githubfile\My_Repository\Tavern Wargame\scs\scs\scs.hpp(1454,23): warning C4018: “<”: 有符号/无符号不匹配
 D:\Githubfile\My_Repository\Tavern Wargame\scs\scs\scs.hpp(1482,24): warning C4018: “<”: 有符号/无符号不匹配
   正在生成代码...
-D:\Githubfile\My_Repository\Tavern Wargame\scs\scs\scs.hpp(1355): warning C4715: “scs::backend::evaluate”: 不是所有的控件路径都返回值
-D:\Githubfile\My_Repository\Tavern Wargame\scs\scs\scs.hpp(805): warning C4715: “scs::parser::parse_block”: 不是所有的控件路径都返回值
-D:\Githubfile\My_Repository\Tavern Wargame\scs\scs\scs.hpp(1046): warning C4715: “scs::backend::context::get_type”: 不是所有的控件路径都返回值
-D:\Githubfile\My_Repository\Tavern Wargame\scs\scs\scs.hpp(468): warning C4715: “scs::get_token”: 不是所有的控件路径都返回值
-D:\Githubfile\My_Repository\Tavern Wargame\scs\scs\scs.hpp(944): warning C4715: “scs::backend::context::get_variable”: 不是所有的控件路径都返回值
-D:\Githubfile\My_Repository\Tavern Wargame\scs\scs\scs.hpp(1542): warning C4715: “<lambda_983a79c65f54bf3a1ebb0816eb3d1907>::operator()”: 不是所有的控件路径都返回值
+  Tavern Wargame.vcxproj -> D:\Githubfile\My_Repository\Tavern Wargame\Debug\Tavern Wargame Client.exe

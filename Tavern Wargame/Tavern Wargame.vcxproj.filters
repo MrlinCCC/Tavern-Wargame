@@ -21,9 +21,27 @@
     <ClCompile Include="GameCore.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Minion.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Hero.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameCore.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Minion.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Hero.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

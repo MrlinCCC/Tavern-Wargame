@@ -1,12 +1,11 @@
 ﻿#include "GameCore.h"
-#include <iostream>
 
 using asio::ip::tcp;
 using namespace GameCore;
-Game_Life_Line::Game_Life_Line()
+GameRunner::GameRunner()
 {
 }
-tcp::socket GameCore::Game_Life_Line::conn_build()
+tcp::socket GameCore::GameRunner::conn_build()
 {
 	asio::io_context io_context;
 	tcp::resolver resolver(io_context);
@@ -15,17 +14,20 @@ tcp::socket GameCore::Game_Life_Line::conn_build()
 	asio::connect(socket, endpoints);
 	return socket;
 }
-void GameCore::Game_Life_Line::run()
+void GameCore::GameRunner::run()
 {
 	// tcp::socket socket_run=conn_build();
-	startMatch(false, true, conn_build());
+	//show page
+	//when start match
+	startMatch(conn_build());
 	Charactor charactor;
 	Hero hero;
 	select_Hero(hero, charactor, conn_build());
 }
 
-void GameCore::Game_Life_Line::startMatch(bool match, bool ready, tcp::socket socket)
+void GameCore::GameRunner::startMatch(tcp::socket socket)
 {
+	bool match = false,ready=true;
 	//建立连接，返回match（true or false）
 	std::cout << "正在匹配...";
 	asio::read(socket, asio::buffer(&match, sizeof(bool)));
@@ -38,7 +40,7 @@ void GameCore::Game_Life_Line::startMatch(bool match, bool ready, tcp::socket so
 	} //匹配成功开始游戏
 }
 
-void GameCore::Game_Life_Line::select_Hero(Hero &hero, Charactor &charactor, tcp::socket socket)
+void GameCore::GameRunner::select_Hero(Hero &hero, Charactor &charactor, tcp::socket socket)
 {
 	hero.init_hero();
 
@@ -58,7 +60,7 @@ void GameCore::Game_Life_Line::select_Hero(Hero &hero, Charactor &charactor, tcp
 
 GameCore::Charactor::Charactor() : life(100), life_event(1), init_num_Entourage(0), init_num_gold(3) {}
 
-void Charactor::buy(GameCore::Entourage &entourage)
+void Charactor::buy(GameCore::Minion &entourage)
 {
 	//获取商店类传递的随从信息
 	entourages_rest.push_back(entourage);
@@ -84,7 +86,7 @@ void Charactor::show_entourages()
 {
 	//获取对面牌的数据
 
-	asio::read(socket, asio::buffer(&entourages_enemy, sizeof(std::vector<Entourage>)));
+	asio::read(socket, asio::buffer(&entourages_enemy, sizeof(std::vector<Minion>)));
 	std::cout << "敌方场上随从:" << std::endl;
 	for (auto i : entourages_enemy)
 	{
@@ -105,7 +107,7 @@ void Charactor::show_entourages()
 	}
 }
 
-void GameCore::Charactor::get_hero_skill(Hero::hero &hero_skill)
+void GameCore::Charactor::get_hero_skill(hero &hero_skill)
 {
 	this->my_hero_skill = &hero_skill;
 }
@@ -146,49 +148,87 @@ void GameCore::Charactor::set_num_Entourage(int num)
 	this->init_num_Entourage = num;
 }
 
-std::vector<Entourage> &GameCore::Charactor::get_rest()
+std::vector<Minion> &GameCore::Charactor::get_rest()
 {
 	return entourages_rest;
 }
 
-std::vector<Entourage> &GameCore::Charactor::get_fight()
+std::vector<Minion> &GameCore::Charactor::get_fight()
 {
 	return entourages_fight;
 }
 
-GameCore::Entourage::Entourage() : gold(1), aggressivity(1), life(1) {}
+GameCore::Minion::Minion() : gold(1), aggressivity(1), life(1) {}
 
-std::string Entourage::show_entourage()
+std::string Minion::show_entourage()
 {
 	return name + std::to_string(life) + std::to_string(aggressivity);
 }
 
-int GameCore::Entourage::get_gold()
+int GameCore::Minion::get_gold()
 {
 	return this->gold;
 }
 
-int GameCore::Entourage::get_aggressivity()
+int GameCore::Minion::get_aggressivity()
 {
 	return this->aggressivity;
 }
 
-int GameCore::Entourage::get_life()
+int GameCore::Minion::get_life()
 {
 	return this->life;
 }
 
-void GameCore::Entourage::set_gold(int g)
+void GameCore::Minion::set_gold(int g)
 {
 	this->gold = g;
 }
 
-void GameCore::Entourage::set_aggressivity(int a)
+void GameCore::Minion::set_aggressivity(int a)
 {
 	this->aggressivity = a;
 }
 
-void GameCore::Entourage::set_life(int l)
+void GameCore::Minion::set_life(int l)
 {
 	this->life = l;
+}
+
+//给盾，随从加血加攻
+void Hero::skill1(GameCore::Charactor &charactor)
+{
+	std::vector<GameCore::Minion> temp;
+	charactor.set_life(105);
+	temp = charactor.get_fight();
+	for (auto i : temp) {
+		i.set_life(i.get_life() + 1);
+		i.set_aggressivity(i.get_aggressivity() + 1);
+	}
+}
+//永久加圣盾
+void Hero::skill2(GameCore::Charactor &charactor)
+{
+
+}
+//将商店任意一张卡随机为另一张同星级卡
+void Hero::skill3(GameCore::Charactor &charactor)
+{
+
+}
+void Hero::set_hero(hero& h, std::string s, skill_type st)
+{
+
+	h.name = s;
+	h.skill = st;
+	Hero::hero_list.push_back(h);
+
+}
+void Hero::init_hero()
+{
+	/*Hero::set_hero(*new hero(), "lp", Hero::skill1);*/
+	Hero::hero_list.push_back(hero("lp", "获得5点额外生命值，所有场上随从属性值加1", Hero::skill1));
+	Hero::hero_list.push_back(hero("lc", "选择一名场上随从获得圣盾", Hero::skill2));
+	Hero::hero_list.push_back(hero("lx", "将商店展示的随从之一转化为另一张同星级随从卡", Hero::skill3));
+	Hero::hero_list.push_back(hero("liming", "将商店展示的随从之一转化为另一张同星级随从卡", Hero::skill3));
 }

@@ -148,14 +148,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Character.h" />
+    <ClInclude Include="Gamer.h" />
     <ClInclude Include="GameCore.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="Minion.h" />
     <ClInclude Include="Shop.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="Gamer.cpp" />
     <ClCompile Include="GameCore.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="main.cpp" />

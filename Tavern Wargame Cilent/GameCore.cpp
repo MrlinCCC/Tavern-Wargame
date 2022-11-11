@@ -10,7 +10,7 @@ GameRunner::GameRunner()
 inline void GameRunner::conn_build()
 {
 	tcp::resolver resolver(m_io_context);
-	m_endpoints = resolver.resolve(SERVER_IP, SERVER_PORT);
+	asio::ip::tcp::resolver::results_type m_endpoints = resolver.resolve(SERVER_IP, SERVER_PORT);
 	p_socket = new tcp::socket(m_io_context);
 	asio::connect(*p_socket, m_endpoints);
 }
@@ -55,19 +55,11 @@ GameRunner::~GameRunner()
 
 bool GameRunner::startMatch()
 {
-	bool match = false, ready = false, res = false, over_time = false;
+	bool is_matched = false, ready = false, over_time = false, begin_game = true;
 	std::cout << "正在匹配..." << std::endl;
-	asio::error_code error;
-	//asio::io_context io_context;
-	//tcp::socket socket(io_context);
-	//tcp::resolver resolver(io_context);
-	//tcp::resolver::results_type endpoints = resolver.resolve(SERVER_IP, SERVER_PORT);
-	//asio::connect(socket, endpoints);
-
-	int result = asio::read(*p_socket, asio::buffer(&match, sizeof(bool)), error);
-	if (error)
-		std::cout << error.message() << std::endl;
-	if (match) {
+	p_socket->read_some(asio::buffer(&is_matched, sizeof(bool)), error);
+	//已匹配
+	if (is_matched) {
 		std::thread count_time([&ready, &over_time]() {
 			Sleep(10000);
 			if (!ready)
@@ -78,22 +70,29 @@ bool GameRunner::startMatch()
 		while (!over_time)
 		{
 			if (_kbhit()) {
-				ready = res = true;
+				ready = true;
 				break;
 			}
-		} //匹配成功开始游戏
-		//asio::write((*p_socket), asio::buffer(&ready, sizeof(bool)));
+		}
+		// 是否准备
+		asio::write((*p_socket), asio::buffer(&ready, sizeof(bool)), error);
+		if (ready)
+			std::cout << "您已就绪！" << std::endl;
+		p_socket->read_some(asio::buffer(&begin_game, sizeof(bool)), error);
+		std::cout << "begin_game has read" << std::endl;
 		if (over_time)
 			std::cout << "您未确认就绪，请重新匹配!" << std::endl;
-		else
+		else if (begin_game)
 			std::cout << "游戏即将开始!" << std::endl;
-		return res;
+		else {
+			std::cout << "有其他玩家未确认就绪，已重新匹配!" << std::endl;
+			startMatch();
+		}
+		return begin_game;
 	}
 }
-
-void GameRunner::select_Hero(Charactor& charactor, tcp::socket socket)
+void GameRunner::select_Hero(Gamer& gamer, tcp::socket socket)
 {
-
 	int getarr[3];
 	std::cout << "please choose your hero" << std::endl;
 	for (int i = 0; i < 3; i++)
@@ -108,6 +107,7 @@ void GameRunner::select_Hero(Charactor& charactor, tcp::socket socket)
 	}
 }
 
+
 void GameRunner::run()
 {
 	int select;
@@ -115,6 +115,7 @@ void GameRunner::run()
 		show_indexPage();
 		std::cout << "请选择：";
 		std::cin >> select;
+		asio::write((*p_socket), asio::buffer(&select, sizeof(int)), error);
 		switch (select)
 		{
 		case 1: {
@@ -130,6 +131,7 @@ void GameRunner::run()
 			break;
 		}
 		case 3: {
+			exit(0);
 			break;
 		}
 		default: {
@@ -139,11 +141,10 @@ void GameRunner::run()
 			break;
 		}
 		}
-		system("pause");
 	}
-	//Charactor charactor;
+	//gamer gamer;
 	//Hero hero;
-	//select_Hero( charactor, conn_build());
+	//select_Hero( gamer, conn_build());
 }
 
 

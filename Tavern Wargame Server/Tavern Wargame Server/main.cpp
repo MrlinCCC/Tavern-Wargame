@@ -3,6 +3,6 @@
 
 int main() {
 	ServerCore sc;
-	sc.run();
+	sc.run_server_core();
 	return 0;
 }

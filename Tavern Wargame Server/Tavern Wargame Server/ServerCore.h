@@ -7,9 +7,11 @@
 #include<queue>
 #include<unordered_map>
 #include<algorithm>
+#include"Hero.h"
 
 const int WATCH_PORT = 8888;
 const int GAME_CHARA_NUMS = 2;
+const int INIT_HERO_NUMS = 2;
 
 class ServerCore;
 enum class MatchState;
@@ -20,12 +22,14 @@ using psockets_map = std::unordered_map<asio::ip::tcp::socket*, MatchState>;
 void watch_port(ServerCore* sc);
 void watch_indexpage(ServerCore* sc, asio::ip::tcp::socket* p_socket);
 bool is_exit_watch_indexpage(ServerCore* sc, asio::ip::tcp::socket* p_socket);
+void match_games(ServerCore* sc);
 void match_game(ServerCore* sc);
 
 class StaticManager {
 public:
 	static asio::io_context& get_io_content();
 	static asio::error_code& get_error_code();
+	static HeroProxy& get_hero_proxy();
 };
 
 class Game {
@@ -33,6 +37,7 @@ class Game {
 public:
 	Game(psockets gamers);
 	Game(psockets&& gamers);
+	void select_hero(asio::ip::tcp::socket* gamer);
 private:
 	psockets m_gamers;
 

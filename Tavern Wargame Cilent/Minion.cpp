@@ -1,9 +1,9 @@
 #include "Minion.h"
 
 
-Minion::Minion(std::string name, int attack, int life, Blood blood, std::string effect, Etype etype,
+Minion::Minion(std::string name, int attack, int life, int star, Blood blood, std::string effect, Etype etype,
 	bool shiled, bool double_attck, bool revive, bool prior_attackted)
-	:m_name(name), m_gold(pGold), m_attack(attack), m_life(life), m_blood(blood), m_effct(effect), m_etype(etype) {
+	:m_name(name), m_attack(attack), m_life(life), m_level(1), m_star(star), m_blood(blood), m_effct(effect), m_etype(etype) {
 	is_shiled = shiled;
 	is_double_attack = double_attck;
 	is_revive = revive;

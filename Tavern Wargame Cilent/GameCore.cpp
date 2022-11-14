@@ -70,6 +70,7 @@ bool GameRunner::startMatch()
 		while (!over_time)
 		{
 			if (_kbhit()) {
+				std::cout << _getch() << std::endl;
 				ready = true;
 				break;
 			}
@@ -86,7 +87,7 @@ bool GameRunner::startMatch()
 			std::cout << "游戏即将开始!" << std::endl;
 		else {
 			std::cout << "有其他玩家未确认就绪，已重新匹配!" << std::endl;
-			startMatch();
+			begin_game = startMatch();
 		}
 		return begin_game;
 	}

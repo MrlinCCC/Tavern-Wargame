@@ -7,24 +7,24 @@
 constexpr int pGold = 3;
 
 enum class Blood {
-	NullBlood=0,
-	Beast=1,
-	Demon=2,
-	Dragon=3,
-	Mechine=4,
-	FishMan=5,
-	Elem=6,
-	Cana=7,
-	All=8
+	NullBlood = 0,
+	Beast = 1,
+	Demon = 2,
+	Dragon = 3,
+	Mechine = 4,
+	FishMan = 5,
+	Elem = 6,
+	Cana = 7,
+	All = 8
 };
 
 enum class Etype
 {
-	B_ROAR =1,//战吼
-	D_RATTLE =2,//亡语
-	ON_ATTACK=3,//攻击
-	BY_REVENGE=4,//复仇
-	AF_SELL=5,//出售
+	B_ROAR = 1,//战吼
+	D_RATTLE = 2,//亡语
+	ON_ATTACK = 3,//攻击
+	BY_REVENGE = 4,//复仇
+	AF_SELL = 5,//出售
 };
 
 std::string show_blood(Blood blood);
@@ -32,9 +32,9 @@ std::string show_blood(Blood blood);
 class Minion
 {
 public:
-	Minion()=default;
-	Minion(std::string name, int attack, int life,Blood blood,std::string effect, Etype etype,
-		 bool shiled, bool double_attck, bool revive, bool prior_attackted);
+	Minion() = default;
+	Minion(std::string name, int attack, int life, int star, Blood blood, std::string effect, Etype etype,
+		bool shiled, bool double_attck, bool revive, bool prior_attackted);
 	~Minion();
 
 	std::string show_info(); //展示当前随从
@@ -49,9 +49,10 @@ public:
 
 private:
 	std::string m_name;
-	int m_gold;		  //所需金币
 	int m_attack; //攻击力
 	int m_life;		  //生命力
+	int m_level;		//费数
+	int m_star;		//星级
 	Blood m_blood;//种族
 	std::string m_effct;//效果脚本名，路径固定
 	Etype m_etype;

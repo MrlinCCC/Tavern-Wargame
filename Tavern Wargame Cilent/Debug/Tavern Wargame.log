@@ -3,18 +3,41 @@
   - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
   - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
   Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
-D:\Githubfile\My_Repository\Tavern Wargame Cilent\scs\scs\scs.hpp(197,21): warning C4018: “<”: 有符号/无符号不匹配
-D:\Githubfile\My_Repository\Tavern Wargame Cilent\scs\scs\scs.hpp(254,22): warning C4018: “<”: 有符号/无符号不匹配
-D:\Githubfile\My_Repository\Tavern Wargame Cilent\scs\scs\scs.hpp(257,26): warning C4018: “<”: 有符号/无符号不匹配
-D:\Githubfile\My_Repository\Tavern Wargame Cilent\scs\scs\scs.hpp(478,21): warning C4018: “<”: 有符号/无符号不匹配
-D:\Githubfile\My_Repository\Tavern Wargame Cilent\scs\scs\scs.hpp(474,14): warning C4101: “tbuf”: 未引用的局部变量
-D:\Githubfile\My_Repository\Tavern Wargame Cilent\scs\scs\scs.hpp(1129,24): warning C4018: “<”: 有符号/无符号不匹配
-D:\Githubfile\My_Repository\Tavern Wargame Cilent\scs\scs\scs.hpp(1301,25): warning C4018: “<”: 有符号/无符号不匹配
-D:\Githubfile\My_Repository\Tavern Wargame Cilent\scs\scs\scs.hpp(1319,27): warning C4018: “<”: 有符号/无符号不匹配
-D:\Githubfile\My_Repository\Tavern Wargame Cilent\scs\scs\scs.hpp(1406,23): warning C4018: “<”: 有符号/无符号不匹配
-D:\Githubfile\My_Repository\Tavern Wargame Cilent\scs\scs\scs.hpp(1434,23): warning C4018: “<”: 有符号/无符号不匹配
-D:\Githubfile\My_Repository\Tavern Wargame Cilent\scs\scs\scs.hpp(1454,23): warning C4018: “<”: 有符号/无符号不匹配
-D:\Githubfile\My_Repository\Tavern Wargame Cilent\scs\scs\scs.hpp(1482,24): warning C4018: “<”: 有符号/无符号不匹配
-D:\Githubfile\My_Repository\Tavern Wargame Cilent\GameCore.h(14,22): warning C4244: “初始化”: 从“double”转换到“const int”，可能丢失数据
-D:\Githubfile\My_Repository\Tavern Wargame Cilent\GameCore.cpp(94): warning C4715: “GameRunner::startMatch”: 不是所有的控件路径都返回值
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(197,21): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(254,22): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(257,26): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(478,21): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(474,14): warning C4101: “tbuf”: 未引用的局部变量
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(1129,24): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(1301,25): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(1319,27): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(1406,24): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(1434,24): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(1454,24): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(1482,25): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\GameCore.h(15,22): warning C4244: “初始化”: 从“double”转换到“const int”，可能丢失数据
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\GameCore.h(48,8): warning C4551: 缺少参数列表的函数调用
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\GameCore.h(56,12): warning C4551: 缺少参数列表的函数调用
+  main.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(197,21): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(254,22): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(257,26): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(478,21): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(474,14): warning C4101: “tbuf”: 未引用的局部变量
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(1129,24): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(1301,25): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(1319,27): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(1406,24): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(1434,24): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(1454,24): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\include\scs\scs\scs.hpp(1482,25): warning C4018: “<”: 有符号/无符号不匹配
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\GameCore.h(15,22): warning C4244: “初始化”: 从“double”转换到“const int”，可能丢失数据
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\GameCore.h(48,8): warning C4551: 缺少参数列表的函数调用
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\GameCore.h(56,12): warning C4551: 缺少参数列表的函数调用
+  正在生成代码...
+D:\Githubfile\My_Repository\Tavern Wargame Cilent\GameCore.cpp(92): warning C4715: “GameRunner::startMatch”: 不是所有的控件路径都返回值
   Tavern Wargame.vcxproj -> D:\Githubfile\My_Repository\Tavern Wargame Cilent\Debug\Tavern Wargame Client.exe

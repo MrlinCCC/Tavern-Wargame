@@ -9,9 +9,9 @@ GameRunner::GameRunner()
 }
 inline void GameRunner::conn_build()
 {
-	tcp::resolver resolver(m_io_context);
+	tcp::resolver resolver(StaticManager::get_io_content());
 	asio::ip::tcp::resolver::results_type m_endpoints = resolver.resolve(SERVER_IP, SERVER_PORT);
-	p_socket = new tcp::socket(m_io_context);
+	p_socket = new tcp::socket(StaticManager::get_io_content());
 	asio::connect(*p_socket, m_endpoints);
 }
 
@@ -57,7 +57,7 @@ bool GameRunner::startMatch()
 {
 	bool is_matched = false, ready = false, over_time = false, begin_game = true;
 	std::cout << "正在匹配..." << std::endl;
-	p_socket->read_some(asio::buffer(&is_matched, sizeof(bool)), error);
+	p_socket->read_some(asio::buffer(&is_matched, sizeof(bool)), StaticManager::get_error_code());
 	//已匹配
 	if (is_matched) {
 		std::thread count_time([&ready, &over_time]() {
@@ -70,17 +70,15 @@ bool GameRunner::startMatch()
 		while (!over_time)
 		{
 			if (_kbhit()) {
-				std::cout << _getch() << std::endl;
 				ready = true;
 				break;
 			}
 		}
 		// 是否准备
-		asio::write((*p_socket), asio::buffer(&ready, sizeof(bool)), error);
+		asio::write((*p_socket), asio::buffer(&ready, sizeof(bool)), StaticManager::get_error_code());
 		if (ready)
 			std::cout << "您已就绪！" << std::endl;
-		p_socket->read_some(asio::buffer(&begin_game, sizeof(bool)), error);
-		std::cout << "begin_game has read" << std::endl;
+		p_socket->read_some(asio::buffer(&begin_game, sizeof(bool)), StaticManager::get_error_code());
 		if (over_time)
 			std::cout << "您未确认就绪，请重新匹配!" << std::endl;
 		else if (begin_game)
@@ -92,20 +90,44 @@ bool GameRunner::startMatch()
 		return begin_game;
 	}
 }
-void GameRunner::select_Hero(Gamer& gamer, tcp::socket socket)
+void GameRunner::select_Hero()
 {
-	int getarr[3];
-	std::cout << "please choose your hero" << std::endl;
-	for (int i = 0; i < 3; i++)
+	//展示
+	int index[INIT_HERO_NUMS];
+	std::cout << "please choose your hero:" << std::endl;
+	for (int count = 0; count < INIT_HERO_NUMS; count++)
 	{
-		asio::read(socket, asio::buffer(&getarr[i], sizeof(int))); //传递三个英雄的下标
+		p_socket->read_some(asio::buffer(&index[count], sizeof(int)), StaticManager::get_error_code()); //传递三个英雄的下标
+		std::cout << count + 1 << "、";
+		StaticManager::get_hero_proxy().get_hero(index[count])->show_introduce();
 	}
+	//选择
+	bool selected = false, overtime = false, finished = false;
+	int input = 0;
+	std::thread count_time([&selected, &overtime]() {
+		Sleep(30000);
+		if (!selected)
+			overtime = true;
+		});
+	count_time.detach();
+	std::thread accept_input(std::bind(&Util::accpet_int_between, std::ref(input), std::ref(selected), 1, INIT_HERO_NUMS + 1, true));
+	accept_input.detach();
+	while (!selected && !overtime);
+	if (overtime && !selected) {
+		input = Util::get_random(INIT_HERO_NUMS + 1);
+		std::cout << "已超时，已自动选择英雄" << input << std::endl;
+	}
+	p_socket->write_some(asio::buffer(&index[input - 1], sizeof(int)), StaticManager::get_error_code());
+	std::cout << "等待其他玩家选择英雄..." << std::endl;
+	p_socket->read_some(asio::buffer(&finished, sizeof(bool)), StaticManager::get_error_code());
+	std::cout << "游戏正式开始！" << std::endl;
+	system("pause");
+	system("cls");
+}
 
-	for (int i = 0; i < 3; i++)
-	{
-		std::cout << std::endl;
-		std::cout << std::endl;
-	}
+void GameRunner::run_gamecore()
+{
+	select_Hero();
 }
 
 
@@ -116,13 +138,13 @@ void GameRunner::run()
 		show_indexPage();
 		std::cout << "请选择：";
 		std::cin >> select;
-		asio::write((*p_socket), asio::buffer(&select, sizeof(int)), error);
+		asio::write((*p_socket), asio::buffer(&select, sizeof(int)), StaticManager::get_error_code());
 		switch (select)
 		{
 		case 1: {
 			system("cls");
 			if (startMatch()) {
-
+				run_gamecore();
 			}
 			else
 				system("pause");
@@ -143,9 +165,26 @@ void GameRunner::run()
 		}
 		}
 	}
-	//gamer gamer;
-	//Hero hero;
-	//select_Hero( gamer, conn_build());
 }
+
+
+asio::io_context& StaticManager::get_io_content()
+{
+	static asio::io_context sm_io_content;
+	return sm_io_content;
+}
+
+asio::error_code& StaticManager::get_error_code()
+{
+	static asio::error_code error;
+	return error;
+}
+
+HeroProxy& StaticManager::get_hero_proxy()
+{
+	static HeroProxy proxy;
+	return proxy;
+}
+
 
 

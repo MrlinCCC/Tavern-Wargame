@@ -144,14 +144,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Gamer.cpp" />
+    <ClCompile Include="Hero.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ServerCore.cpp" />
+    <ClCompile Include="Minion.cpp" />
+    <ClCompile Include="ServerRunner.cpp" />
+    <ClCompile Include="Shop.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Gamer.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="resource1.h" />
-    <ClInclude Include="ServerCore.h" />
+    <ClInclude Include="Hero.h" />
+    <ClInclude Include="Minion.h" />
+    <ClInclude Include="ServerRunner.h" />
+    <ClInclude Include="Shop.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

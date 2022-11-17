@@ -18,24 +18,36 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ServerCore.cpp">
+    <ClCompile Include="ServerRunner.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Gamer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Hero.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Minion.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ServerCore.h">
+    <ClInclude Include="ServerRunner.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Gamer.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
+    <ClInclude Include="Hero.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="resource1.h">
+    <ClInclude Include="Minion.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

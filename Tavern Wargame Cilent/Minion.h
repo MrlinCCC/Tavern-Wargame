@@ -2,7 +2,7 @@
 #include<iostream>
 #include<string>
 #include <vector>
-#include"scs/scs/scs.hpp"
+#include"include/scs/scs/scs.hpp"
 
 constexpr int pGold = 3;
 
@@ -24,7 +24,7 @@ enum class Etype
 	D_RATTLE = 2,//亡语
 	ON_ATTACK = 3,//攻击
 	BY_REVENGE = 4,//复仇
-	AF_SELL = 5,//出售
+	AF_SELL = 5,//售后
 };
 
 std::string show_blood(Blood blood);

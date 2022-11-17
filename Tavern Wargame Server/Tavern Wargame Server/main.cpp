@@ -1,8 +1,8 @@
 #include<iostream>
-#include"ServerCore.h"
+#include"ServerRunner.h"
 
 int main() {
-	ServerCore sc;
+	ServerRunner sc;
 	sc.run_server_core();
 	return 0;
 }
